@@ -1,9 +1,11 @@
-import "./App.css";
+import Header from "./components/Header";
+import InputArea from "./components/InputArea";
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-red-800">Hello there </h1>
+      <Header />
+      <InputArea />
     </div>
   );
 }

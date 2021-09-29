@@ -12,12 +12,24 @@ function App() {
     });
   };
 
+  const handleDelete = (id) => {
+    setNotes((preValue) => {
+      return [...preValue.filter((note, index) => index !== id)];
+    });
+  };
+
   return (
     <div className="App">
       <Header />
       <InputArea onAdd={addNote} />
       {notes.map((note, index) => (
-        <Note key={index} title={note.title} content={note.content} />
+        <Note
+          key={index}
+          id={index}
+          title={note.title}
+          content={note.content}
+          onDelete={handleDelete}
+        />
       ))}
     </div>
   );

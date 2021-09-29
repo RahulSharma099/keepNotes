@@ -3,6 +3,7 @@ import express from 'express';
 import helmet from 'helmet';
 import config from '../config';
 import routes from '../api';
+import { onError, onNotFound } from '../error/error-controller';
 
 export default ({ app }: { app: express.Application }): void => {
   /**
@@ -33,6 +34,10 @@ export default ({ app }: { app: express.Application }): void => {
 
   // Middleware that transforms the raw string of req.body into json
   app.use(express.json());
+
+  // Erorr Handling middleware
+  app.use(onNotFound);
+  app.use(onError);
 
   // Load API routes
   app.use(config.api.prefix, routes());

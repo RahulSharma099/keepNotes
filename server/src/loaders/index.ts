@@ -1,10 +1,10 @@
-import database from './database';
+import { getDbClient } from './database';
 import express from './express';
 import Logger from './logger';
 import Express from 'express';
 
 export default async ({ expressApp }: { expressApp: Express.Application }): Promise<void> => {
-  await database();
+  await getDbClient();
   Logger.info(`✌️ Connection to database successful`);
 
   await express({ app: expressApp });
